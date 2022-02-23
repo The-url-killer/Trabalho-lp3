@@ -7,6 +7,8 @@ import com.trabalho_lp3.Trabalho.lp3.representation.CriarJogoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JogoService {
 
@@ -28,12 +30,8 @@ public class JogoService {
         return repository.findByTitulo(titulo);
     }
 
-    public Jogo buscarJogoPorGenero(String genero) {
-        return repository.findByGenero(genero);
-    }
-
-    public Jogo buscarJogoPorTituloeGenero(String titulo, String genero) {
-        return repository.findByTituloAndGenero(titulo, genero);
+    public List<Jogo> buscarJogoPorTituloeGenero(String titulo, String genero) {
+        return repository.findByTituloOrGenero(titulo, genero);
     }
 
     public void like(Jogo jogo) {
